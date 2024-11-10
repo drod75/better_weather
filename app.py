@@ -7,12 +7,12 @@ app = Flask(__name__, static_url_path='/static')
 @app.route('/')
 @app.route('/home')
 def home():
-    place = request.args.get("Search")
-    data = get_city_health(place)
-    if place != None or place != "Search for a city...":
-        return render_template('weather.html', content = data)
-    else:
-        return render_template('home.html')
+    return render_template('home.html')
+
+@app.route('/weather')
+def weather():
+    content = get_city_health('New York City')
+    return render_template('weather.html', content = content)
 
 @app.route('/credits')
 def credits():

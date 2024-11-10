@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-    {% for key, item in content.items() %}
-        <h1>{{key}}</h1>
-        <ul>
-            {% for key, value in item.items() %}
-                <li>{{key}}: {{value}}</li>
-            {% endfor %}
-        </ul>
+    {% for c in content %}
+        {% for key, item in c.items() %}
+            {% if item != None %}
+                <h1>{{key}}</h1>
+                <p>{{item}}</p>
+            {% endif %}
+        {% endfor %}
     {% endfor %}
 {% endblock %}
