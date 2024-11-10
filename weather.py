@@ -28,35 +28,43 @@ flood_params  = ['river_discharge', 'river_discharge_mean', 'river_discharge_med
 #data parameters
 web_params = [forecast_params, marine_params, flood_params, air_params]
 
+def to_dict(idx, data):
+    dct = dict()
+    if data == None:
+        return None
+    for l, item in enumerate(web_params[idx]):
+        dct[item] = data.Variables(l).ValuesAsNumpy()
+    return dct
+
 def get_city_health(city_name):
     location = None
     city_health = []
     for idx, url in enumerate(urls):
         if idx == 2 or idx == 3:
             params = {
-                'latitude': location.latitude,
-                'longitude': location.longitude,
+                'latitude': 40.741895,
+                'longitude': -73.989308,
                 'timezone': 'auto',
                 'daily': web_params[idx]
             }
             responses = openmeteo.weather_api(url, params=params)
             response = responses[0]
             daily = response.Daily()
-            js = daily.__dict__
-            wd = {(url.rsplit('/', 1)[1]): js}
+            data = to_dict(idx, daily)
+            wd = {(url.rsplit('/', 1)[1]): data}
             city_health.append(wd)
         else:
             params = {
-                'latitude': location.latitude,
-                'longitude': location.longitude,
+                'latitude': 40.741895,
+                'longitude': -73.989308,
                 'timezone': 'auto',
                 'hourly': web_params[idx]
             }
             responses = openmeteo.weather_api(url, params=params)
             response = responses[0]
             hourly = response.Hourly()
-            js = hourly.__dict__
-            wd = {(url.rsplit('/', 1)[1]): js}
+            data = to_dict(idx, hourly)
+            wd = {(url.rsplit('/', 1)[1]): data}
             city_health.append(wd)
 
     return city_health
