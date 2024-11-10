@@ -1,0 +1,42 @@
+body{
+    margin: 0px;
+}
+main {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.credits{
+    font-size: 20pt;
+}
+
+.navbar{
+    background-color: black;
+    margin: 0px;
+}
+
+.navbar ul{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    display: inline-flex;
+
+}
+
+.navbar a{
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+
+}
+
+.navbar a:hover{
+    background-color: rgb(179, 177, 177);
+    color: black;
+}
