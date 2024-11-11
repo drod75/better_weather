@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+<h1>Better Weather: Weather</h1>
     {% for c in content %}
         {% for key, item in c.items() %}
             {% if item != None %}
-                <h1>{{key}}</h1>
+                <h3>{{key}}</h3>
                 <p>{{item}}</p>
             {% endif %}
         {% endfor %}

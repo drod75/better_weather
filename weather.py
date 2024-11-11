@@ -39,11 +39,14 @@ def to_dict(idx, data):
 def get_city_health(city_name):
     location = None
     city_health = []
+    cords = {
+        'New York City': {'lat': 40.741895, 'lon': -73.989308},
+    }
     for idx, url in enumerate(urls):
         if idx == 2 or idx == 3:
             params = {
-                'latitude': 40.741895,
-                'longitude': -73.989308,
+                'latitude': cords[city_name]['lat'],
+                'longitude': cords[city_name]['lon'],
                 'timezone': 'auto',
                 'daily': web_params[idx]
             }
@@ -55,8 +58,8 @@ def get_city_health(city_name):
             city_health.append(wd)
         else:
             params = {
-                'latitude': 40.741895,
-                'longitude': -73.989308,
+                'latitude': cords[city_name]['lat'],
+                'longitude': cords[city_name]['lon'],
                 'timezone': 'auto',
                 'hourly': web_params[idx]
             }
