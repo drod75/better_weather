@@ -16,12 +16,9 @@ urls = [
     "https://air-quality-api.open-meteo.com/v1/air-quality"
 ]
 
-#hourly
-forecast_params  = ['temperature_2m', 'relative_humidity_2m', 'apparent_temperature', 'surface_pressure', 'cloud_cover'
-                    ,'wind_speed_10m', 'wind_direction_10m', 'wind_gusts_10m', 'precipitation', 'precipitation_probability','rain']
-marine_params  = ['wave_height', 'wave_direction', 'wave_period', 'wind_wave_peak_period', 'ocean_current_velocity', 'ocean_current_direction']
-
 #daily
+forecast_params  = ['temperature_2m_max', 'temperature_2m_min', 'apparent_temperature_max', 'apparent_temperature_min', 'precipitation_sum', 'rain_sum', 'showers_sum', 'precipitation_hours', 'precipitation_probability_mean', 'sunrise', 'sunset', 'wind_speed_10m_max', 'wind_gusts_10m_max', 'wind_direction_10m_dominant']
+marine_params  = ['wave_height_max', 'wind_wave_height_max', 'swell_wave_height_max', 'wave_direction_dominant', 'wind_wave_direction_dominant', 'swell_wave_direction_dominant', 'wave_period_max', 'wind_wave_period_max', 'swell_wave_period_max', 'wind_wave_peak_period_max', 'swell_wave_peak_period_max']
 air_params = ['carbon_monoxide', 'carbon_dioxide', 'ammonia', 'methane', 'dust', 'us_aqi']
 flood_params  = ['river_discharge', 'river_discharge_mean', 'river_discharge_median', 'river_discharge_max', 'river_discharge_min']
 
@@ -31,43 +28,41 @@ web_params = [forecast_params, marine_params, flood_params, air_params]
 def to_dict(idx, data):
     dct = dict()
     if data == None:
-        return None
+        return
     for l, item in enumerate(web_params[idx]):
         dct[item] = data.Variables(l).ValuesAsNumpy()
     return dct
 
+def to_df(idx, data):
+    df = pd.DataFrame(data)
+    return df
+
 def get_city_health(city_name):
-    location = None
-    city_health = []
+    city_health = dict()
     cords = {
         'New York City': {'lat': 40.741895, 'lon': -73.989308},
     }
     for idx, url in enumerate(urls):
-        if idx == 2 or idx == 3:
-            params = {
-                'latitude': cords[city_name]['lat'],
-                'longitude': cords[city_name]['lon'],
-                'timezone': 'auto',
-                'daily': web_params[idx]
-            }
-            responses = openmeteo.weather_api(url, params=params)
-            response = responses[0]
-            daily = response.Daily()
-            data = to_dict(idx, daily)
-            wd = {(url.rsplit('/', 1)[1]): data}
-            city_health.append(wd)
-        else:
-            params = {
-                'latitude': cords[city_name]['lat'],
-                'longitude': cords[city_name]['lon'],
-                'timezone': 'auto',
-                'hourly': web_params[idx]
-            }
-            responses = openmeteo.weather_api(url, params=params)
-            response = responses[0]
-            hourly = response.Hourly()
-            data = to_dict(idx, hourly)
-            wd = {(url.rsplit('/', 1)[1]): data}
-            city_health.append(wd)
+        params = {
+            'latitude': cords[city_name]['lat'],
+            'longitude': cords[city_name]['lon'],
+            'timezone': 'auto',
+            'daily': web_params[idx]
+        }
+        if idx == 0:
+            params['temperature_unit'] = 'fahrenheit'
+            params['wind_speed_unit'] = 'mph'
+            params['precipitation_unit'] = 'inch'
+        if idx == 2:
+            params['forecast_days'] = 7
+
+        responses = openmeteo.weather_api(url, params=params)
+        response = responses[0]
+        daily = response.Daily()
+        data = to_dict(idx, daily)
+        if data != None:
+            df = to_df(idx, data)
+            key = url.rsplit('/', 1)[1]
+            city_health.update({key: df})
 
     return city_health

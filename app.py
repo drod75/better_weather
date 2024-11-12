@@ -5,6 +5,9 @@ from weather import get_city_health
 app = Flask(__name__, static_url_path='/static')
 
 @app.route('/')
+def default():
+    return redirect(url_for('home'))
+
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
@@ -12,7 +15,7 @@ def home():
         return redirect(url_for('weather', content = city))
     return render_template('home.html')
 
-@app.route('/weather_for_<content>', methods=['GET'])
+@app.route('/weather_for_<content>', methods=['GET', 'POST'])
 def weather(content):
     data = get_city_health(content)
     return render_template('weather.html', content = data)

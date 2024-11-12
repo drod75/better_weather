@@ -1,0 +1,33 @@
+.weather-card{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-color: black;
+    border-width: 5px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.weather-card-title{
+    font-size: 15pt;
+}
+
+.weather-card-date{
+    margin-left: 10px;
+    font-size: 10pt;
+}
+
+.weather-card-data{
+    margin-left: 10px;
+    font-size: 8pt;
+}
+
+.day {
+    border: 1px solid black;
+    border-color: black;
+    border-width: 5px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
