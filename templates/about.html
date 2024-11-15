@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/about.css')}}"/>
+
+<h1>About</h1>
+<p class="about">
+    Better Weather is a weather app that uses Open-Meteo and Llama 3 to provide weather information for a user. 
+    The app is built using Flask and the Open-Meteo API. The weather information is then passed to the Llama 3 model 
+    to generate a weather report for the user. The weather report is then displayed to the user, along with this the 
+    AI tells the User recommendations on what precautions they should take for the day.
+    
+    Thank you for using Better Weather!
+</p>
+
+<ul class="credits">
+    <li><a href="https://drod75.github.io/">David Rodriguez</a></li>
+    <li>Christopher Bonafacio</li> 
+    <li><a href="https://github.com/applebug4">Emma Katz</a></li>
+</ul>
+{% endblock %}

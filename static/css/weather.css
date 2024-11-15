@@ -11,17 +11,21 @@
 }
 
 .weather-card-title{
-    font-size: 15pt;
-}
-
-.weather-card-date{
+    font-weight: bold;
+    font-size: 25pt;
     margin-left: 10px;
-    font-size: 10pt;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .weather-card-data{
     margin-left: 10px;
     font-size: 8pt;
+}
+
+.weather-card-date{
+    font-size: 20pt;
+    margin-left: 10px;
 }
 
 .day {

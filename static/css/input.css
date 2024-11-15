@@ -1,0 +1,20 @@
+.input-form{
+    display: flex;
+    justify-content: center;
+}
+
+.input-box{
+    width: 70%;
+    height: 44px;
+    font-size: 20pt;
+    padding-right: 0px;
+    margin-left: 10px;
+}
+
+.input-submit{
+    width: 10%;
+    height: 50px;
+    font-size: 20pt;
+    padding-left: 0px;
+    margin-right: 10px;
+}

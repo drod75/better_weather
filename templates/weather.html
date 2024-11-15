@@ -3,8 +3,8 @@
 <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/weather.css')}}"/>
 <h1>Better Weather: Weather</h1>
     {% for key,item in content.items() %}
-    <div class="weather-card">
-        <h3 class="weather-card-title">{{key}}</h3>
+    <details class="weather-card">
+        <summary class="weather-card-title">{{key.upper()}}</summary>
             {% for index, row in item.iterrows(): %}
                     <div class="day">
                         <p class="weather-card-date">{{index + 1}}</p>
@@ -13,6 +13,6 @@
                         {% endfor %}
                     </div>
             {% endfor %}
-    </div>
+     </details>
     {% endfor %}
 {% endblock %}

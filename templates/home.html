@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/input.css')}}"/>
 <h1>Better Weather: Home</h1>
 <form method="POST">
-    <input type="text" name="city" placeholder="Enter a city">
-    <input type="submit" value="Submit">
+    <div class="input-form">
+        <input class="input-box" type="text" name="city" placeholder="Enter a city">
+        <input class="input-submit" type="submit" value="Submit">
+    </div>
 </form>    
 {% endblock %}

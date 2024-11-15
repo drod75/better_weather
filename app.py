@@ -21,8 +21,8 @@ def weather(content):
     return render_template('weather.html', content = data)
 
 @app.route('/credits')
-def credits():
-    return render_template('credits.html')
+def about():
+    return render_template('about.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
