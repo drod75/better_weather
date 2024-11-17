@@ -8,15 +8,33 @@ main {
 
 h1 {
     text-align: center;
+    font-size: 35pt;
+
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgb(21, 239, 239)), color-stop(1, rgb(219, 28, 219)));
+    background-image: -moz-linear-gradient(top, rgb(21, 239, 239) 0%, rgb(219, 28, 219) 100%);
+    background-image: linear-gradient(to bottom, rgb(21, 239, 239) 0%, rgb(219, 28, 219) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
 .credits{
     font-size: 20pt;
 }
 
+.g {
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgb(21, 239, 239)), color-stop(1, rgb(219, 28, 219)));
+    background-image: -moz-linear-gradient(top, rgb(21, 239, 239) 0%, rgb(219, 28, 219) 100%);
+    background-image: linear-gradient(to bottom, rgb(21, 239, 239) 0%, rgb(219, 28, 219) 100%);
+    padding: 2px;
+}
+
 .navbar{
+    margin: 2px;
     background-color: black;
-    margin: 0px;
+    font-size: 15pt;
+    border-radius: 10px;
 }
 
 .navbar ul{
@@ -24,10 +42,11 @@ h1 {
     padding: 0px;
     margin: 0px;
     display: inline-flex;
-
+    
 }
 
 .navbar a{
+    border-radius: 10px;
     color: white;
     text-decoration: none;
     padding: 15px;
@@ -37,6 +56,7 @@ h1 {
 }
 
 .navbar a:hover{
-    background-color: rgb(179, 177, 177);
+    border-radius: 10px;
+    background-color: white;
     color: black;
 }

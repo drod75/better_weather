@@ -8,12 +8,14 @@
         <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
     </head>
     <body>
-        <nav class="navbar">
-            <ul>
-                <li><a href="{{url_for('home')}}">Home</a></li>
-                <li><a href="{{url_for('about')}}">About</a></li>
-            </ul>
-        </nav>
+        <div class="g">
+            <nav class="navbar">
+                <ul>
+                    <li><a class="g-word" href="{{url_for('home')}}">Home</a></li>
+                    <li><a class="g-word" href="{{url_for('about')}}">About</a></li>
+                </ul>
+            </nav>
+        </div>
         <main>
             {% block content %}
             {% endblock %}

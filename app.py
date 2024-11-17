@@ -20,7 +20,7 @@ def weather(content):
     data = get_city_health(content)
     return render_template('weather.html', content = data)
 
-@app.route('/credits')
+@app.route('/about')
 def about():
     return render_template('about.html')
 

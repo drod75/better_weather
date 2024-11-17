@@ -13,8 +13,22 @@
 
 .input-submit{
     width: 10%;
-    height: 50px;
+    height: 49.5px;
     font-size: 20pt;
     padding-left: 0px;
     margin-right: 10px;
+    border: none;
+    border-radius: 2px;
+    background-color: black;
+    color: white;
+    transition: 0.3s ease;
 }
+
+.input-submit:hover{
+    transition: 0.3s ease;
+    color: white;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgb(21, 239, 239)), color-stop(1, rgb(219, 28, 219)));
+    background-image: -moz-linear-gradient(top, rgb(21, 239, 239) 0%, rgb(219, 28, 219) 100%);
+    background-image: linear-gradient(to bottom, rgb(21, 239, 239) 0%, rgb(219, 28, 219) 100%);
+    
+}   
