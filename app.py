@@ -22,7 +22,8 @@ def weather(content):
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    file = open('text-templates/about.txt', 'r')
+    return render_template('about.html', content=file)
 
 if __name__ == '__main__':
     app.run(debug=True)

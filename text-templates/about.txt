@@ -1,0 +1,13 @@
+Better Weather is a weather app that uses the Flask framework and Open-Meteo API to provide weather information for any city,
+county, state, or region that you can think of!
+
+The app has been designed to incorporate AI and provide users with a suggestion for the day based on the weather information,
+in order to do this we use the Hugging Face Transformers library and the Llama 3 model.
+
+The development of Better Weather was done by David Rodriguez, Christopher Bonafacio, and Emma Katz, our story is that
+after competing in the Queens College Hackathon, we decided to create a better weather app that would out class
+the one we had created. We also decided to use the Open-Meteo API to get weather information for any city because our
+old weather app was using the OpenWeatherMap API which was not very effective for our use case. We also decided to use
+Llama 3 because it is one of the best models and available for free via the Hugging Face Transformers library.
+
+Overall we are very proud of the work we have done and we hope you enjoy using Better Weather!

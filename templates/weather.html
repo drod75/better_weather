@@ -1,18 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/weather.css')}}"/>
-<h1>Better Weather: Weather</h1>
+<h1>Better Weather: {{content['city']}}</h1>
     {% for key,item in content.items() %}
-    <details class="weather-card">
-        <summary class="weather-card-title">{{key.upper()}}</summary>
-            {% for index, row in item.iterrows(): %}
-                    <div class="day">
-                        <p class="weather-card-date">{{index + 1}}</p>
-                        {% for col_label in item.columns: %}
-                            <p class="weather-card-data">{{col_label}}: {{row[col_label]}}</p>
-                        {% endfor %}
-                    </div>
-            {% endfor %}
-     </details>
+    {% if key != 'city' %}
+        <details class="weather-card">
+            <summary class="weather-card-title">{{key.upper()}}</summary>
+                {% for index, row in item.iterrows(): %}
+                        <div class="day">
+                            <p class="weather-card-date">{{index + 1}}</p>
+                            {% for col_label in item.columns: %}
+                                <p class="weather-card-data">{{col_label}}: {{row[col_label]}}</p>
+                            {% endfor %}
+                        </div>
+                {% endfor %}
+        </details>
+    {% endif %}
     {% endfor %}
 {% endblock %}

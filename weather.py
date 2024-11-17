@@ -3,6 +3,7 @@ import requests_cache
 import pandas as pd
 from pprint import pprint
 from retry_requests import retry
+from geopy.geocoders import Nominatim
 
 # Setup the Open-Meteo API client with cache and retry on error
 cache_session = requests_cache.CachedSession('.cache', expire_after = 3600)
@@ -39,13 +40,19 @@ def to_df(idx, data):
 
 def get_city_health(city_name):
     city_health = dict()
+    geolocator = Nominatim(user_agent="Your_Name")
+    location = geolocator.geocode(city_name)
     cords = {
-        'New York City': {'lat': 40.741895, 'lon': -73.989308},
+        'lat': location.latitude,
+        'lon': location.longitude
     }
+
+    city_health.update({'city': city_name})
+
     for idx, url in enumerate(urls):
         params = {
-            'latitude': cords[city_name]['lat'],
-            'longitude': cords[city_name]['lon'],
+            'latitude': cords['lat'],
+            'longitude': cords['lon'],
             'timezone': 'auto',
             'daily': web_params[idx]
         }

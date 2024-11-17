@@ -9,6 +9,8 @@
     font-size: 20pt;
     padding-right: 0px;
     margin-left: 10px;
+    border-radius: 2px;
+    border-color: black;
 }
 
 .input-submit{
