@@ -6,7 +6,7 @@ import torch
 
 #llama setup
 # load_dotenv('.env')
-# api_key = os.environ.get("access")
+# api_key = os.environ.get("huggingface_access")
 # login(token=api_key)
 # pipe = pipeline(task="text-generation", model="meta-llama/Llama-3.2-3B-Instruct")
 # messages = [
